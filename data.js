@@ -72,7 +72,6 @@ export const skillCategories = [
   },
 ];
 
-// duplicated so the marquee loops smoothly
 export const allSkills = [
   "JavaScript", "TypeScript", "Python", "Java", "C", "SQL", "Kotlin",
   "React", "Next.js", "Node.js", "Express.js", "FastAPI",

@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 
-// reveals children when they scroll into view
 export default function SR({ children, delay = 0 }) {
   const ref = useRef(null);
 

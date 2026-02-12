@@ -24,7 +24,6 @@ const footerLinks = [
   ["Contact", "#contact"],
 ];
 
-// reusable card for timeline items
 function TimelineCard({ job }) {
   return (
     <div className="tl-card">
@@ -41,7 +40,6 @@ function TimelineCard({ job }) {
   );
 }
 
-// reusable card for projects
 function ProjectCard({ project }) {
   return (
     <>
@@ -69,14 +67,13 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // toggle .dark class on <html>
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
   return (
     <>
-      {/* nav */}
+
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <div className="nav-inner">
           <span className="nav-logo">Jerome Shibu</span>
@@ -92,7 +89,7 @@ export default function Portfolio() {
         </div>
       </nav>
 
-      {/* hero */}
+
       <section className="hero" id="home">
         <div className="hero-inner">
           <h1 className="hero-name">Jerome Shibu</h1>
@@ -109,7 +106,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* about */}
+
       <div className="about-section" id="about">
         <div className="about-inner">
           <SR>
@@ -140,7 +137,7 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* experience */}
+
       <div className="exp-section" id="experience">
         <div className="exp-inner">
           <SR>
@@ -160,7 +157,7 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* projects */}
+
       <div className="projects-section" id="projects">
         <div className="projects-inner">
           <SR>
@@ -186,7 +183,7 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* skills */}
+
       <div className="skills-section" id="skills">
         <div className="skills-inner">
           <SR>
@@ -216,7 +213,7 @@ export default function Portfolio() {
         </SR>
       </div>
 
-      {/* contact */}
+
       <div className="contact-section" id="contact">
         <SR>
           <div className="contact-inner">
@@ -240,7 +237,7 @@ export default function Portfolio() {
         </SR>
       </div>
 
-      {/* footer */}
+
       <footer className="footer">
         <div className="footer-inner">
           <p>© {new Date().getFullYear()} Jerome Shibu. All rights reserved.</p>
