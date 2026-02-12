@@ -57,7 +57,7 @@ export const projects = [
   },
 ];
 
-export const skillCategories = [
+export const skillGroups = [
   {
     label: "Languages",
     skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "SQL", "Kotlin", "HTML/CSS"],

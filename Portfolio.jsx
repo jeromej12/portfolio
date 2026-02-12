@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
-import { experience, projects, skillCategories, allSkills } from "./data";
+import { experience, projects, skillGroups, allSkills } from "./data";
 import SR from "./SR";
 
 const navLinks = [
@@ -24,16 +24,16 @@ const footerLinks = [
   ["Contact", "#contact"],
 ];
 
-function TimelineCard({ job }) {
+function JobCard({ job }) {
   return (
-    <div className="tl-card">
-      <p className="tl-period">{job.period} · {job.type}</p>
-      <p className="tl-role">{job.role}</p>
-      <p className="tl-company">{job.company}</p>
-      <div className="tl-details">
-        <p className="tl-desc">{job.desc}</p>
-        <div className="tl-tags">
-          {job.tags.map(tag => <span className="tl-tag" key={tag}>{tag}</span>)}
+    <div className="job-card">
+      <p className="job-period">{job.period} · {job.type}</p>
+      <p className="job-role">{job.role}</p>
+      <p className="job-company">{job.company}</p>
+      <div className="job-details">
+        <p className="job-desc">{job.desc}</p>
+        <div className="job-tags">
+          {job.tags.map(tag => <span className="job-tag" key={tag}>{tag}</span>)}
         </div>
       </div>
     </div>
@@ -43,15 +43,15 @@ function TimelineCard({ job }) {
 function ProjectCard({ project }) {
   return (
     <>
-      <div className="proj-icon">{project.icon}</div>
-      <p className="proj-tag">{project.tag}</p>
-      <h3 className="proj-title">{project.title}</h3>
-      <p className="proj-desc">{project.desc}</p>
-      <div className="proj-footer">
-        <div className="proj-tech">
-          {project.tech.map(tech => <span className="proj-badge" key={tech}>{tech}</span>)}
+      <div className="project-icon">{project.icon}</div>
+      <p className="project-type">{project.tag}</p>
+      <h3 className="project-title">{project.title}</h3>
+      <p className="project-desc">{project.desc}</p>
+      <div className="project-bottom">
+        <div className="project-tech">
+          {project.tech.map(tech => <span className="project-badge" key={tech}>{tech}</span>)}
         </div>
-        <div className="proj-arrow">↗</div>
+        <div className="project-arrow">↗</div>
       </div>
     </>
   );
@@ -82,7 +82,7 @@ export default function Portfolio() {
               <li key={label}><a href={href}>{label}</a></li>
             ))}
           </ul>
-          <a href="#contact" className="nav-cta">Get in touch</a>
+          <a href="#contact" className="nav-contact">Get in touch</a>
           <button className="theme-toggle" onClick={() => setDark(!dark)}>
             {dark ? "☀" : "☾"}
           </button>
@@ -100,8 +100,8 @@ export default function Portfolio() {
             I build software and automation — from full-stack web apps to cloud systems on AWS.
           </p>
           <div className="hero-actions">
-            <a href="#projects" className="btn-fill">See my work</a>
-            <a href="#contact" className="btn-ghost">Get in touch</a>
+            <a href="#projects" className="btn-solid">See my work</a>
+            <a href="#contact" className="btn-outline">Get in touch</a>
           </div>
         </div>
       </section>
@@ -111,7 +111,7 @@ export default function Portfolio() {
         <div className="about-inner">
           <SR>
             <div className="about-text">
-              <p className="section-eyebrow">About me</p>
+              <p className="section-label">About me</p>
               <h2 className="section-title" style={{ marginBottom: "1.5rem" }}>
                 Curious by nature.<br />Precise by practice.
               </h2>
@@ -127,11 +127,11 @@ export default function Portfolio() {
             </div>
           </SR>
           <SR delay={120}>
-            <div className="about-meta">
-              <div className="meta-row"><span className="meta-key">Location</span><span className="meta-val">Washington, DC</span></div>
-              <div className="meta-row"><span className="meta-key">Current role</span><span className="meta-val">Software Developer @ Mindpetal</span></div>
-              <div className="meta-row"><span className="meta-key">Focus</span><span className="meta-val">Full Stack / Backend</span></div>
-              <div className="meta-row"><span className="meta-key">Education</span><span className="meta-val">B.S. Computer Science, UMD</span></div>
+            <div className="about-info">
+              <div className="info-row"><span className="info-label">Location</span><span className="info-value">Washington, DC</span></div>
+              <div className="info-row"><span className="info-label">Current role</span><span className="info-value">Software Developer @ Mindpetal</span></div>
+              <div className="info-row"><span className="info-label">Focus</span><span className="info-value">Full Stack / Backend</span></div>
+              <div className="info-row"><span className="info-label">Education</span><span className="info-value">B.S. Computer Science, UMD</span></div>
             </div>
           </SR>
         </div>
@@ -141,15 +141,15 @@ export default function Portfolio() {
       <div className="exp-section" id="experience">
         <div className="exp-inner">
           <SR>
-            <p className="section-eyebrow">Work experience</p>
+            <p className="section-label">Work experience</p>
             <h2 className="section-title">Where I've worked.</h2>
           </SR>
           <div className="timeline">
             {experience.map((job, i) => (
               <SR key={job.role + job.company} delay={i * 100}>
-                <div className="tl-item">
-                  <div className="tl-dot" />
-                  <TimelineCard job={job} />
+                <div className="job-item">
+                  <div className="job-dot" />
+                  <JobCard job={job} />
                 </div>
               </SR>
             ))}
@@ -161,19 +161,19 @@ export default function Portfolio() {
       <div className="projects-section" id="projects">
         <div className="projects-inner">
           <SR>
-            <p className="section-eyebrow">Selected work</p>
+            <p className="section-label">Selected work</p>
             <h2 className="section-title">Things I've built.</h2>
-            <p className="section-sub">Personal projects, side experiments, and things I shipped at work.</p>
+            <p className="section-desc">Personal projects, side experiments, and things I shipped at work.</p>
           </SR>
           <div className="projects-grid">
             {projects.map((project, i) => (
               <SR key={project.title} delay={i * 80}>
                 {project.link ? (
-                  <a href={project.link} className="proj-card" target="_blank" rel="noopener noreferrer">
+                  <a href={project.link} className="project-card" target="_blank" rel="noopener noreferrer">
                     <ProjectCard project={project} />
                   </a>
                 ) : (
-                  <div className="proj-card">
+                  <div className="project-card">
                     <ProjectCard project={project} />
                   </div>
                 )}
@@ -187,17 +187,17 @@ export default function Portfolio() {
       <div className="skills-section" id="skills">
         <div className="skills-inner">
           <SR>
-            <p className="section-eyebrow">Technical skills</p>
+            <p className="section-label">Technical skills</p>
             <h2 className="section-title">What I work with.</h2>
-            <p className="section-sub">The tools and technologies I use day to day.</p>
+            <p className="section-desc">The tools and technologies I use day to day.</p>
           </SR>
           <SR delay={80}>
-            <div className="skills-cats">
-              {skillCategories.map(cat => (
-                <div className="skills-cat" key={cat.label}>
-                  <p className="skills-cat-title">{cat.label}</p>
-                  <div className="skills-cat-items">
-                    {cat.skills.map(skill => <span className="skill-chip" key={skill}>{skill}</span>)}
+            <div className="skill-groups">
+              {skillGroups.map(group => (
+                <div className="skill-group" key={group.label}>
+                  <p className="skill-group-title">{group.label}</p>
+                  <div className="skill-group-items">
+                    {group.skills.map(skill => <span className="skill-tag" key={skill}>{skill}</span>)}
                   </div>
                 </div>
               ))}
@@ -205,9 +205,9 @@ export default function Portfolio() {
           </SR>
         </div>
         <SR delay={120}>
-          <div className="skills-marquee-wrap">
-            <div className="skills-marquee">
-              {allSkills.map((skill, i) => <div className="marquee-pill" key={i}>{skill}</div>)}
+          <div className="marquee-wrap">
+            <div className="marquee">
+              {allSkills.map((skill, i) => <div className="marquee-item" key={i}>{skill}</div>)}
             </div>
           </div>
         </SR>
@@ -217,13 +217,13 @@ export default function Portfolio() {
       <div className="contact-section" id="contact">
         <SR>
           <div className="contact-inner">
-            <p className="section-eyebrow">Contact</p>
+            <p className="section-label">Contact</p>
             <h2 className="section-title">Let's work together.</h2>
-            <p className="section-sub">
+            <p className="section-desc">
               Whether it's a job opportunity, a project, or just a chat — I'd love to connect.
             </p>
             <div className="contact-btns">
-              <a href="#" className="btn-ghost">Download resume</a>
+              <a href="https://drive.google.com/file/d/1HQEK0Hv5Dbo-pkYqA01eX1V2wM4UhF3Q/view?usp=sharing" className="btn-outline">Download resume</a>
             </div>
             <div className="contact-links">
               {contactLinks.map(link => (
