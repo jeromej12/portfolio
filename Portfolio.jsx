@@ -13,8 +13,8 @@ const navLinks = [
 
 const contactLinks = [
   { icon: "✉️", label: "Email", href: "mailto:jeromeshibuwork@gmail.com" },
-  { icon: <img src="/linkedin.png" alt="LinkedIn" width="35" height="35" />, label: "LinkedIn", href: "https://www.linkedin.com/in/jerome-shibu-16a8521b0/" },
-  { icon: <img src="/github.png" alt="GitHub" width="22" height="22" className="invert-dark" />, label: "GitHub", href: "https://github.com/jeromej12" },
+  { icon: <img src={`${import.meta.env.BASE_URL}linkedin.png`} alt="LinkedIn" width="35" height="35" />, label: "LinkedIn", href: "https://www.linkedin.com/in/jerome-shibu-16a8521b0/" },
+  { icon: <img src={`${import.meta.env.BASE_URL}github.png`} alt="GitHub" width="22" height="22" className="invert-dark" />, label: "GitHub", href: "https://github.com/jeromej12" },
 ];
 
 const footerLinks = [
